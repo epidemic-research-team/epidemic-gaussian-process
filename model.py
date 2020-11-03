@@ -84,7 +84,7 @@ class COVIDGPModel(object):
             self._elbo.append(self._model.elbo((X, y)))
 
     def predict(self, X):
-        return self._model.predict_f(X)
+        return self._model.predict_y(X)
     
     @property
     def score(self):
@@ -103,7 +103,7 @@ class COVIDGPModel(object):
             _fig, ax = plt.subplots(1, figsize=(15, 4))
         
         Ypred = self._model.predict_f_samples(X, full_cov=True, num_samples=num_samples)
-        mean, var = self._model.predict_f(X)
+        mean, var = self._model.predict_y(X)
 
         if not test:            
             z_init = list(self._inducing_variable[:, 0])
