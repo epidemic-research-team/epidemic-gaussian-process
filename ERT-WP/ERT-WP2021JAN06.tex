@@ -1,0 +1,160 @@
+\documentclass[11pt,a4paper,amssymb,amsmath, tightenlines]{article}
+
+% Packages
+\usepackage{amsmath, amssymb, amsthm, latexsym, mathrsfs, url, color, epsfig, graphics, float, setspace,hyperref, graphicx,bbm}
+\usepackage{tikz}
+\usepackage{sectsty}
+\usepackage{float}
+\urlstyle{same}
+\usepackage[T1]{fontenc}
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage{pgfplots}
+\usepackage{color}
+\usepackage{bm}
+
+\usepackage[numbers]{natbib}
+\bibliographystyle{abbrvnat}
+
+
+\usepackage{algorithmicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{appendix}
+
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots} 
+\usepackage{pgfgantt}
+\usepackage{pdflscape}
+\newlength\fwidth
+\newlength\fheight
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false}
+
+% Margins
+\setlength{\topmargin}{-.425in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\textwidth}{6.25in}
+\setlength{\textheight}{9.625in}
+% Line spacing
+\renewcommand{\baselinestretch}{1}
+\allowdisplaybreaks[1]
+
+
+% Theorem styles
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Definition}{Definition}[section]
+\newtheorem{rem}{Remark}
+\newtheorem{Proposition}{Proposition}[section]
+\newtheorem{Lemma}{Lemma}[section]
+\newtheorem{Corollary}{Corollary}[section]
+\newtheorem{Example}{Example}[section]
+\numberwithin{equation}{section}
+
+% New commands
+\newcommand{\e}{{\rm e}}
+\newcommand{\lnn}{{\rm ln}}
+\newcommand{\expp}{{\rm exp}}
+\newcommand{\erf}{{\rm erf}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\El}{\mathscr{E}}
+\newcommand{\cH}{\mathscr{H}}
+\newcommand{\F}{\mathscr{F}}
+\newcommand{\G}{\mathscr{G}}
+\newcommand{\PR}{\mathbb{P}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\mL}{\mathbb{L}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\rd}{\textup{d}}
+\newcommand{\hM}{\widehat{M}}
+\newcommand{\indi}[1]{1\hspace{-.09cm}\textup{\textrm{l}}}
+\newcommand{\QT}{\mathbb{Q}_T}
+\newcommand{\hG}{\widehat{G}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\am}{\color{red}}
+
+
+\begin{document}
+\title{\vspace{-2cm}\bf Generalized Curve-Fitting Propagation Models \\ for Epidemics}
+\author{L. Ardon$^{\ast}$, F. Buet-Golfouse{$^{\ast\,\dag}$}, A. Macrina{$^{\dag\, \ddag}$\footnote{Corresponding author: a.macrina@ucl.ac.uk}\ }, G. Papadopoulos$^{\ast}$, G. W. Peters{$^{\S}$} \\ \\ {$^{\ast}$J. P. Morgan Chase Bank} \\ {London E14 5JP, United Kingdom} \\ {$^{\dag}$Department of Mathematics, University College London} \\ {London WC1E 6BT, United Kingdom} \\ {$^{\ddag}$African Institute of Financial Markets \& Risk Management} \\ {University of Cape Town} \\ {Rondebosch 7701, South Africa} \\ {$^{\S}$}Department of Actuarial Mathematics \& Statistics \\ Heriot-Watt University \\ Edinburgh EH14 4AS, United Kingdom}
+\date{\today 
+}
+\maketitle
+\vspace{-1cm}
+\begin{abstract}
+\noindent 
+\\\vspace{-1cm}\\
+We propose a novel approach for... 
+\\
+\\
+{\bf Keywords}: 
+\\\vspace{-0.5cm}
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\begin{description}
+	\item[-] Discussion of physical (epidemiological, structural) versus statistical (reduced-form) models. 
+	\item[-] Identify sub-class of models in which our proposed model fits or is closest related to, and summarize specific model features of sub-class in comparison to other types of modelling approaches. 
+	\item[-]Description of merits and shortcomings of our modelling approach, e.g. parsimony, flexibility, efficiency, interpretability, accuracy, and ease of data feeding. Also, model robustness, inclusion of attributes such as mobility, and applicability for decision making.
+	\item[-] Concise presentation of ``winning model'' within the model class we develop.
+	\item[-] Short summary of data set, which will be discussed and used later in the paper.
+\end{description}
+%%%
+\section{Research project goals}
+\begin{description}
+	\item[-] Data-driven probabilistic model for spatial-temporal propagation of epidemics, such that data can be fed with ease and model outputs are interpretable.
+	\item[-] Produce evidence for NPIs to be useful and accurate models when generalized curve-fitting stochastic propagation models are developed. 
+	\item[-] Model robustness against a number of features, e.g. noise, sparsity, spatial structure, etc.
+\end{description}
+%%%
+\section{Data}
+\begin{description}
+	\item[-] Detailed description of the data set and precise source, so that reproducing and validating any results presented in the paper is possible. 
+	\item[-] Discussion of any procedure to improve quality of used data set. Transparency is of paramount importance. Any bias must be discussed and treatment thereof explained. The goal is to eliminate any possibility to argue against the quality of results obtained by the model, which can be traced back to data quality or mishandling. 
+	\item[-] Any other data, which is not available or has not been used (why?) and which may produce improved model performance.
+	\item[-] Comparison of used data for our model with other data sets used in other studies and models. For example, does our approach require less data while achieving comparable or even better model performance (e.g. predictability or stress test)?
+\end{description}
+%%%
+\section{Modelling approach}
+\begin{description}
+\item[-] Non-compartmental Gaussian process approach where GP-kernel is used to capture various data features.
+\item[-] ``Robustification" of ``winning model'', log-transform...
+\item[-] Multi-output model apt for capturing spatial heterogeneity (e.g. US states, vs USA or GER L\"ander vs GER, UK counties vs UK) 
+\end{description}
+%%%
+\section{Model calibration}
+\begin{description}
+	\item[-] Gaussian processes and regression technique.
+	\item[-] Robustness: sparsity, noise, spatial structure, averaging, etc.
+\end{description}
+%%%
+\section{Results}
+\begin{description}
+	\item[-] New class of reduced-form propagation models for the stochastic dynamics of epidemics.
+	\item[-] Robust against stress-testing
+	\item[-] ``Winning model'' that has been trained on a dense data set, applicable with high level of accuracy to case with sparse data (e.g. trained on US data and applied to epidemics in Turkey, Mexico, etc., South Africa?).
+	\item[-] No MCMC... ?
+	\item ... 
+\end{description}
+\vspace{0cm}
+\noindent {\bf Acknowledgments}. The authors acknowledge...
+
+%%%% BIBLIOGRAPHY 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{filename}
+\vspace{.5cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{appendix}
+\section{Appendix}
+%\subsection{}
+\end{appendix}
+\end{document}
