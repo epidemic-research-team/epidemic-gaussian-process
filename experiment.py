@@ -96,7 +96,7 @@ class Report(pd.DataFrame):
 def _default_train_test_split_func(t, X, y):
     return train_test_split(t, X, y, test_size=0.2)
 
-def run_experiment(name, t, X, y, model_params=None, train_test_split_func=None, plot=False):
+def run_experiment(name, t, X, y, model_params=None, train_test_split_func=None, plot=False, round_digit=4):
     model_params = model_params or {}
     train_test_split_func = train_test_split_func or _default_train_test_split_func
     
@@ -142,13 +142,13 @@ def run_experiment(name, t, X, y, model_params=None, train_test_split_func=None,
         test_size = y_test.shape[0],
         n_inducing_points = model._model.inducing_variable.Z.shape[0],
         run_time = timer.elapsed,
-        within_sample = round(np.mean(y_train_true - y_train_pred), 0),
+        within_sample = round(np.mean(y_train_true - y_train_pred), round_digit),
         var_within_sample = round(np.mean(var_train), 4),
-        out_sample = round(np.mean(y_test_true - y_test_pred), 0),
+        out_sample = round(np.mean(y_test_true - y_test_pred), round_digit),
         var_out_sample = round(np.mean(var_test), 4),
-        week_1 = round(np.mean(y_test_true[:7] - y_test_pred[:7]), 0),
-        week_2 = round(np.mean(y_test_true[7:14] - y_test_pred[7:14]), 0),
-        week_3 = round(np.mean(y_test_true[14:] - y_test_pred[14:]), 0),
+        week_1 = round(np.mean(y_test_true[:7] - y_test_pred[:7]), round_digit),
+        week_2 = round(np.mean(y_test_true[7:14] - y_test_pred[7:14]), round_digit),
+        week_3 = round(np.mean(y_test_true[14:] - y_test_pred[14:]), round_digit),
         model_obj = model
     )
 
