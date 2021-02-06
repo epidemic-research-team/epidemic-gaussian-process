@@ -1,0 +1,16 @@
+/section{Data Acquisition}
+
+
+/section{Data Preprocessing}
+
+
+/section{Models}
+
+
+The three different runs, 
+
+1. run 55 GP algorithms on the pre-processed dataset
+2. run 55 GP algorithms on log both the covariates and the target variable
+3. run 55 GP algorithms on log the target variable only
+
+In total, the process includes 165 different models or 55 models per afforementioned group run. What the output tables show is that for the original approach (1), out of the 55 models the 5 top (listed by test sample accuracy) are models that rely solely on the epidemiological covariates. It also shows that the kernel type and how the covariates are combined plays no role in the performance of the model as long as the covariates include time (t) as independent variable. When mobility information is included then the models seem to underperform compared against the top-5. The top-5 models outperform alternatives for 1, 2 and 3 week predictions (as well as the 1-2 weeks prediction timeframe). Overall, the proportion of mobility models included in the top-20 is 30\%.  
